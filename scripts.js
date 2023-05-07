@@ -10,6 +10,29 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+function display() {
+  const library = document.querySelector(".books");
+  library.innerHTML = "";
+  myLibrary.forEach((element, index) => {
+    let book = myLibrary[index];
+    let bookElement = document.createElement("div");
+    bookElement.classList.add("book-container");
+    bookElement.innerHTML = `
+        <div class="book-title">
+          <p>${book.title}</p>
+        </div>
+        <div class="book-author">
+          <p>${book.author}</p>
+        </div>
+        <div class="pages">
+            <p>${book.pages}</p>
+        </div>
+    `;
+
+    library.appendChild(bookElement);
+  });
+}
+
 function addBookToLibrary() {
   const inputAuthor = document.querySelector("#author");
   const inputTitle = document.querySelector("#title");
@@ -22,7 +45,9 @@ function addBookToLibrary() {
   const read = inputRead.checked;
 
   const bookInfo = new Book(title, author, pages, read);
-  console.log(bookInfo);
+  myLibrary.push(bookInfo);
+
+  display();
 }
 
 form.addEventListener("submit", (e) => {
