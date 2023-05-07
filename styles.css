@@ -12,11 +12,15 @@ body {
 }
 
 :root {
-  --header-bgcolor: #3a86ff;
+  --header-bgcolor: #3a85ffd5;
   --btn-add-bgcolor: #ffbe0b;
   --btn-read-readed-bgcolor: #06d6a0;
   --btn-read-noreaded-bgcolor: #e63946;
   --form-bgcolor: #d628289f;
+  --main-bgcolor: #bde0fe;
+  --bookcontainer-bgcolor: #faedcd;
+  --boxshadow-color: #aeaeae;
+  --submit-bgcolor: #edede9;
 }
 
 .container {
@@ -32,19 +36,28 @@ header {
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+
+}
+main {
+  background-color: var(--main-bgcolor);
 }
 
 .btn-add {
-  padding: 1rem;
+  font-weight: 800;
   border-radius: 0.5rem;
   color: #fff;
   background-color: var(--btn-add-bgcolor);
   border: none;
+  padding: 1rem;
 }
 
 .title {
+  align-self: flex-start;
   color: #fff;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .books {
@@ -56,16 +69,15 @@ header {
   gap: 2rem;
 }
 
-.book-container {
-  width: 300px;
-  height: 300px;
-  border: 1px solid black;
-}
 
 .form {
-  width: 70vh;
-  height: 70vh;
-  background-color: var(--form-bgcolor);
+  width: 60vh;
+  height: 60vh;
+  background: linear-gradient(
+    90deg,
+    hsla(217, 100%, 50%, 0.6) 0%,
+    hsla(186, 100%, 69%, 0.6) 100%
+  );
   backdrop-filter: blur(10px);
   position: absolute;
   top: 50%;
@@ -76,11 +88,50 @@ header {
   flex-direction: column;
   gap: 1rem;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  position: fixed;
+  padding: 1rem;
+  box-shadow: 0px 0px 8px var(--boxshadow-color);
 }
 
-.blur {
-  filter: blur(5px);
+form .inputs {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 25%;
+  width: 100%;
+  font-size: 1.4rem;
+  gap: 1rem;
+}
+
+form .inputs input {
+  width: 15rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+form .inputs label {
+  color: #fff;
+}
+
+
+.input-read{
+  display: flex;
+  gap: 1rem;
+  color: white;
+  font-size: 1.4rem;
+}
+
+.btn-submit{
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 10rem;
+  font-size: 1rem;
+  background-color: var(--submit-bgcolor)
 }
 
 .closeWindow {
@@ -94,6 +145,9 @@ header {
   align-items: center;
   gap: 1rem;
   padding: 1rem;
+  background-color: var(--bookcontainer-bgcolor);
+  border-radius: 1rem;
+  box-shadow: 0px 0px 8px var(--boxshadow-color);
 }
 
 .book-container p {
@@ -109,15 +163,27 @@ header {
 }
 
 .btn-read {
-  padding: 1rem;
   border: none;
   color: #fff;
+  width: 7rem;
+  height: 2.4rem;
 }
 
-.readed {
+.read {
   background-color: var(--btn-read-readed-bgcolor);
 }
 
-.no-readed {
+.unread {
   background-color: var(--btn-read-noreaded-bgcolor);
+}
+
+.btn-remove {
+  border: none;
+  border-radius: 0.4rem;
+  color: #fff;
+  background-color: red;
+}
+
+button:hover{
+  filter: brightness(1.1)
 }

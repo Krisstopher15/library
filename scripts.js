@@ -39,13 +39,13 @@ function display() {
     bookElement.classList.add("book-container");
     bookElement.innerHTML = `
         <div class="book-title">
-        <p>${element.title}</p>
+        <p>Title: ${element.title}</p>
         </div>
         <div class="book-author">
-        <p>${element.author}</p>
+        <p>Author: ${element.author}</p>
         </div>
         <div class="pages">
-        <p>${element.pages}</p>
+        <p>Pages: ${element.pages}</p>
         </div>
         <button onclick="changeReadStatus(${index})" class="${element.read ? 'read' : 'unread'} btn-read">${element.read ? "Read" : "No Readed"}</button>
         <button class="btn-remove" onclick="removeBook(${index})">Remove</button>
