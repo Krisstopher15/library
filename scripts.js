@@ -1,4 +1,5 @@
 const btnAdd = document.querySelector(".btn-add");
+const btnDelete = document.querySelector(".btn-remove");
 const form = document.querySelector(".form");
 const books = document.querySelector(".books");
 
@@ -10,6 +11,10 @@ function Book(title, author, pages, read) {
   this.pages = pages;
   this.read = read;
 }
+
+Book.prototype.readStatus = function () {
+  this.read = !this.read;
+};
 
 function addBookToLibrary() {
   const inputAuthor = document.querySelector("#author");
@@ -30,20 +35,19 @@ function addBookToLibrary() {
 function display() {
   books.innerHTML = "";
   myLibrary.forEach((element, index) => {
-    let book = myLibrary[index];
     let bookElement = document.createElement("div");
     bookElement.classList.add("book-container");
     bookElement.innerHTML = `
         <div class="book-title">
-        <p>${book.title}</p>
+        <p>${element.title}</p>
         </div>
         <div class="book-author">
-        <p>${book.author}</p>
+        <p>${element.author}</p>
         </div>
         <div class="pages">
-        <p>${book.pages}</p>
+        <p>${element.pages}</p>
         </div>
-        <button>Read</button>
+        <button onclick="changeReadStatus(${index})" class="${element.read ? 'read' : 'unread'} btn-read">${element.read ? "Read" : "No Readed"}</button>
         <button class="btn-remove" onclick="removeBook(${index})">Remove</button>
         `;
 
@@ -72,6 +76,8 @@ function removeBook(index) {
   display();
 }
 
-function testButtons() {
-  console.log("Hi");
+
+function changeReadStatus(index) {
+  myLibrary[index].readStatus();
+  display();
 }
