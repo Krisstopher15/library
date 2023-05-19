@@ -5,16 +5,17 @@ const books = document.querySelector(".books");
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  readStatus() {
+    this.read = !this.read;
+  }
 }
-
-Book.prototype.readStatus = function () {
-  this.read = !this.read;
-};
 
 function addBookToLibrary() {
   const inputAuthor = document.querySelector("#author");
@@ -47,7 +48,9 @@ function display() {
         <div class="pages">
         <p>Pages: ${element.pages}</p>
         </div>
-        <button onclick="changeReadStatus(${index})" class="${element.read ? 'read' : 'unread'} btn-read">${element.read ? "Read" : "No Readed"}</button>
+        <button onclick="changeReadStatus(${index})" class="${
+      element.read ? "read" : "unread"
+    } btn-read">${element.read ? "Read" : "No Readed"}</button>
         <button class="btn-remove" onclick="removeBook(${index})">Remove</button>
         `;
 
@@ -75,7 +78,6 @@ function removeBook(index) {
   myLibrary.splice(index, 1);
   display();
 }
-
 
 function changeReadStatus(index) {
   myLibrary[index].readStatus();
