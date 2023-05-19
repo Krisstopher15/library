@@ -39,7 +39,6 @@ header {
   position: sticky;
   top: 0;
   backdrop-filter: blur(10px);
-
 }
 main {
   background-color: var(--main-bgcolor);
@@ -63,12 +62,11 @@ main {
 .books {
   padding: 2rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(auto-fit, minmax(200px, 300px));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-rows: repeat(auto-fit, minmax(300px, 300px));
   height: 100%;
   gap: 2rem;
 }
-
 
 .form {
   width: 60vh;
@@ -117,21 +115,20 @@ form .inputs label {
   color: #fff;
 }
 
-
-.input-read{
+.input-read {
   display: flex;
   gap: 1rem;
   color: white;
   font-size: 1.4rem;
 }
 
-.btn-submit{
+.btn-submit {
   border: none;
   padding: 1rem;
   border-radius: 0.5rem;
   width: 10rem;
   font-size: 1rem;
-  background-color: var(--submit-bgcolor)
+  background-color: var(--submit-bgcolor);
 }
 
 .closeWindow {
@@ -184,6 +181,6 @@ form .inputs label {
   background-color: red;
 }
 
-button:hover{
-  filter: brightness(1.1)
+button:hover {
+  filter: brightness(1.1);
 }
